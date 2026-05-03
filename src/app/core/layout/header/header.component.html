@@ -1,0 +1,24 @@
+<header class="app-header">
+  <a class="logo-area" routerLink="/">
+    <app-logo [size]="32"></app-logo>
+    <span class="brand-name">Alva</span>
+  </a>
+
+  <div class="user-area" (click)="toggleMenu($event)">
+    <span class="user-name">{{ userName }}</span>
+    <div class="avatar">
+      {{ userInitials }}
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" *ngIf="isMenuOpen" (click)="$event.stopPropagation()">
+      <button class="dropdown-item" (click)="goToSettings()">
+        <i class="ph ph-gear"></i> Configurações
+      </button>
+      <div class="divider"></div>
+      <button class="dropdown-item text-danger" (click)="logout()">
+        <i class="ph ph-sign-out"></i> Sair
+      </button>
+    </div>
+  </div>
+</header>

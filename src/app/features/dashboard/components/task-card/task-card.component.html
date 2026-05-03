@@ -1,0 +1,41 @@
+<div class="task-card" [class.completed]="task.completed" [ngClass]="'type-' + task.type">
+  
+  <div class="card-left">
+    <!-- Checkbox / Time indicator -->
+    <div class="indicator" (click)="onToggleComplete($event)">
+      <ng-container *ngIf="isAppointment">
+        <span class="time">{{ appointmentTask.time }}</span>
+      </ng-container>
+
+      <ng-container *ngIf="isHabit || isDeadlineGoal">
+        <div class="checkbox" [class.checked]="task.completed">
+          <i class="ph ph-check" *ngIf="task.completed"></i>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <h3 class="title">{{ task.title }}</h3>
+      
+      <!-- Meta info based on type -->
+      <div class="meta">
+        <span *ngIf="isAppointment && appointmentTask.location" class="meta-item">
+          <i class="ph ph-map-pin"></i> {{ appointmentTask.location }}
+        </span>
+        
+        <span *ngIf="isHabit && habitTask.streak" class="meta-item streak">
+          <i class="ph ph-fire"></i> {{ habitTask.streak }} dias
+        </span>
+        
+        <span *ngIf="isDeadlineGoal" class="meta-item">
+          <i class="ph ph-target"></i> {{ deadlineTask.currentVolume }} / {{ deadlineTask.targetVolume }} {{ deadlineTask.unit }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-right" *ngIf="isAppointment">
+    <i class="ph ph-clock"></i>
+  </div>
+</div>

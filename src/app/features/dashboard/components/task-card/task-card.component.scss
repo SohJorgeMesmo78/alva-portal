@@ -1,0 +1,100 @@
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: var(--bg-surface-hover);
+    transform: translateY(-2px);
+  }
+
+  &.completed {
+    opacity: 0.6;
+    
+    .title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+  }
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+
+  .time {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+  }
+
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    &.checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--bg-main);
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .title {
+    font-size: 1rem;
+    color: var(--text-title);
+    margin: 0;
+  }
+
+  .meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &.streak {
+        color: #ff5555;
+      }
+    }
+  }
+}
+
+.card-right {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}

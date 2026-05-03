@@ -1,0 +1,47 @@
+<div class="login-layout">
+  
+  <!-- Left Side: Brand & Visuals -->
+  <div class="visual-side">
+    <div class="brand-container">
+      
+      <app-logo [size]="200"></app-logo>
+      
+      <h1 class="brand-title">Alva</h1>
+      <p class="brand-subtitle">O amanhecer da sua rotina.</p>
+    </div>
+  </div>
+
+  <!-- Right Side: Login Form -->
+  <div class="form-side">
+    <div class="form-container">
+      <h2>Bem-vindo de volta</h2>
+      <p class="form-subtitle">Entre com seus dados para acessar o seu painel.</p>
+
+      <form (submit)="onLogin($event)">
+        <div class="error-message" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
+        <div class="input-group">
+          <label for="login">E-mail ou Usuário</label>
+          <input type="text" id="login" name="login" [(ngModel)]="loginData.login" placeholder="seu@email.com ou usuário" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" [(ngModel)]="loginData.password" placeholder="••••••••" required>
+        </div>
+
+        <div class="form-actions">
+          <label class="remember-me">
+            <input type="checkbox"> Lembrar-me
+          </label>
+          <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit" class="btn-primary">Entrar no sistema</button>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+<div class="daily-focus">
+  <header class="header">
+    <div class="date-info">
+      <span class="day-name">{{ date | date:'EEEE' }}</span>
+      <h1 class="date-full">{{ date | date:'dd \'de\' MMMM, yyyy' }}</h1>
+    </div>
+    
+    <div class="actions">
+      <button class="btn-primary">
+        <i class="ph ph-plus"></i> Nova Tarefa
+      </button>
+    </div>
+  </header>
+
+  <div class="tasks-container" *ngIf="tasks.length > 0; else noTasks">
+    <app-task-card 
+      *ngFor="let task of tasks" 
+      [task]="task"
+      (toggleComplete)="onToggleComplete($event)">
+    </app-task-card>
+  </div>
+
+  <ng-template #noTasks>
+    <div class="empty-state">
+      <div class="icon-wrapper">
+        <i class="ph ph-coffee"></i>
+      </div>
+      <h3>Tudo limpo por aqui!</h3>
+      <p>Você não tem tarefas ou compromissos programados para este dia.</p>
+    </div>
+  </ng-template>
+</div>

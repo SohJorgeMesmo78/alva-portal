@@ -1,0 +1,127 @@
+<div class="settings-container">
+  <div class="header">
+    <h1>Configurações</h1>
+    <p>Personalize sua experiência no Alva.</p>
+  </div>
+
+  <div class="settings-content">
+    
+    <!-- Idioma e Região -->
+    <section class="settings-card">
+      <h2><i class="ph ph-globe"></i> Idioma e Região</h2>
+      
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Idioma</label>
+          <select [(ngModel)]="selectedLanguage">
+            <option *ngFor="let lang of languages" [value]="lang.code">{{ lang.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>País</label>
+          <select [(ngModel)]="selectedCountry">
+            <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Fuso Horário</label>
+          <select [(ngModel)]="selectedTimezone">
+            <option *ngFor="let tz of timezones" [value]="tz.code">{{ tz.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Formato da Data</label>
+          <select [(ngModel)]="selectedDateFormat">
+            <option *ngFor="let format of dateFormats" [value]="format.code">{{ format.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Formato da Hora</label>
+          <select [(ngModel)]="selectedTimeFormat">
+            <option *ngFor="let format of timeFormats" [value]="format.code">{{ format.name }}</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cores do Sistema -->
+    <section class="settings-card">
+      <h2><i class="ph ph-palette"></i> Cores do Sistema</h2>
+      
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Tema</label>
+          <select [(ngModel)]="selectedTheme">
+            <option *ngFor="let theme of themes" [value]="theme.code">{{ theme.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Cor Principal</label>
+          <div class="color-picker">
+            <button 
+              *ngFor="let color of primaryColors" 
+              class="color-dot"
+              [style.background-color]="color.code"
+              [class.active]="selectedPrimaryColor === color.code"
+              (click)="selectedPrimaryColor = color.code"
+              [title]="color.name">
+              <i class="ph ph-check" *ngIf="selectedPrimaryColor === color.code"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configuração de Calendário -->
+    <section class="settings-card">
+      <h2><i class="ph ph-calendar"></i> Configuração de Calendário</h2>
+      
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Início da semana</label>
+          <select [(ngModel)]="startOfWeek">
+            <option *ngFor="let day of weekStarts" [value]="day.code">{{ day.name }}</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notificações -->
+    <section class="settings-card">
+      <h2><i class="ph ph-bell"></i> Notificações</h2>
+      
+      <div class="toggle-group">
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <span class="title">Ativar notificações</span>
+            <span class="desc">Receba alertas sobre tarefas e compromissos.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="notificationsEnabled">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <span class="title">Efeitos Sonoros</span>
+            <span class="desc">Tocar som ao completar um hábito ou meta.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="soundEnabled">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="btn-primary" (click)="saveSettings()">Salvar Configurações</button>
+    </div>
+  </div>
+</div>

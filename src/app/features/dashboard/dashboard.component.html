@@ -1,0 +1,18 @@
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <app-calendar-nav 
+      [selectedDate]="selectedDate"
+      (dateSelect)="onDateSelect($event)">
+    </app-calendar-nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <app-daily-focus 
+      [date]="selectedDate"
+      [tasks]="tasksForSelectedDate"
+      (toggleTask)="onToggleTask($event)">
+    </app-daily-focus>
+  </main>
+</div>

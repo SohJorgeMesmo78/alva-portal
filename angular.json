@@ -56,12 +56,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -125,5 +120,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "62d9a50c-9042-42eb-9593-6aa950dad63c"
   }
 }

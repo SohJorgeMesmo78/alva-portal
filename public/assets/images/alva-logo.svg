@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sun Base -->
+  <circle cx="100" cy="120" r="60" fill="#FFAA00" />
+  
+  <!-- Sun Rays -->
+  <path d="M100 20 L100 35" stroke="#FFAA00" stroke-width="8" stroke-linecap="round"/>
+  <path d="M40 60 L50 70" stroke="#FFAA00" stroke-width="8" stroke-linecap="round"/>
+  <path d="M160 60 L150 70" stroke="#FFAA00" stroke-width="8" stroke-linecap="round"/>
+  <path d="M20 120 L35 120" stroke="#FFAA00" stroke-width="8" stroke-linecap="round"/>
+  <path d="M180 120 L165 120" stroke="#FFAA00" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Horizon Line -->
+  <path d="M10 130 L190 130" stroke="#FFAA00" stroke-width="12" stroke-linecap="round"/>
+</svg>

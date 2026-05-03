@@ -1,0 +1,114 @@
+.app-header {
+  height: 70px;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  position: relative;
+  z-index: 50;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+
+  app-logo {
+    color: var(--primary);
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-title);
+    letter-spacing: -0.5px;
+  }
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s;
+  position: relative;
+
+  &:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-base);
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+
+  .dropdown-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-base);
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--bg-surface-hover);
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+
+    &.text-danger {
+      color: #ff5555;
+      
+      &:hover {
+        background-color: rgba(255, 85, 85, 0.1);
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4px 0;
+  }
+}
