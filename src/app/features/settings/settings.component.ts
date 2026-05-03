@@ -41,7 +41,8 @@ export class SettingsComponent implements OnInit {
   dateFormats = [
     { code: 'dd/MM/yyyy', name: 'DD/MM/AAAA (ex: 31/12/2026)' },
     { code: 'MM/dd/yyyy', name: 'MM/DD/AAAA (ex: 12/31/2026)' },
-    { code: 'yyyy-MM-dd', name: 'AAAA-MM-DD (ex: 2026-12-31)' }
+    { code: 'yyyy-MM-dd', name: 'AAAA-MM-DD (ex: 2026-12-31)' },
+    { code: 'd \'de\' MMMM, yyyy', name: 'Longo (ex: 1 de Janeiro, 2025)' }
   ];
 
   timeFormats = [
@@ -121,6 +122,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.updateSettings(newSettings).subscribe({
       next: () => {
         console.log('Configurações salvas no backend com sucesso!');
+        this.authService.updateUserSettings(newSettings);
         this.settingsService.applyThemeColors(this.selectedPrimaryColor, this.selectedTheme);
         alert('Configurações salvas!');
       },

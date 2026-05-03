@@ -1,8 +1,8 @@
 <div class="daily-focus">
   <header class="header">
-    <div class="date-info">
-      <span class="day-name">{{ date | date:'EEEE' }}</span>
-      <h1 class="date-full">{{ date | date:'dd \'de\' MMMM, yyyy' }}</h1>
+    <div class="date-display">
+      <span class="day-name">{{ date | date:'EEEE':'':userLanguage }}</span>
+      <h1 class="date-full">{{ date | date:userDateFormat:'':userLanguage }}</h1>
     </div>
     
     <div class="actions">

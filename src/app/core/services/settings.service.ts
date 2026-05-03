@@ -22,6 +22,8 @@ export class SettingsService {
     if (primaryColor) {
       document.documentElement.style.setProperty('--primary', primaryColor);
     }
-    // Expand later for dark/light themes
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
   }
 }

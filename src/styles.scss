@@ -23,6 +23,19 @@
   --radius-full: 9999px;
 }
 
+[data-theme="light"] {
+  /* Light Theme Overrides */
+  --bg-main: #F3F4F6;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #E5E7EB;
+  
+  --text-title: #111827;
+  --text-base: #374151;
+  --text-muted: #6B7280;
+
+  --border-color: #D1D5DB;
+}
+
 * {
   margin: 0;
   padding: 0;

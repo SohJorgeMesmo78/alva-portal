@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../core/services/auth.service';
 
 interface CalendarDay {
   date: Date;
@@ -23,9 +24,31 @@ export class CalendarNavComponent implements OnInit {
   currentMonth: Date = new Date();
   days: CalendarDay[] = [];
   weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  userLanguage = 'pt-BR';
+
+  startOfWeek = 0;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.generateCalendar();
+    this.authService.currentUser$.subscribe(user => {
+      if (user && user.settings) {
+        this.startOfWeek = parseInt(user.settings.startOfWeek, 10);
+        this.userLanguage = user.settings.language;
+        this.updateWeekDays();
+        this.generateCalendar();
+      } else {
+        this.generateCalendar();
+      }
+    });
+  }
+
+  updateWeekDays() {
+    if (this.startOfWeek === 1) {
+      this.weekDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+    } else {
+      this.weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+    }
   }
 
   generateCalendar() {
@@ -36,12 +59,20 @@ export class CalendarNavComponent implements OnInit {
     const lastDayOfMonth = new Date(year, month + 1, 0);
     
     const startDate = new Date(firstDayOfMonth);
-    startDate.setDate(startDate.getDate() - startDate.getDay()); // Go back to Sunday
+    const firstDayOfWeek = startDate.getDay();
+    const diff = this.startOfWeek === 1 
+      ? (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1)
+      : firstDayOfWeek;
+      
+    startDate.setDate(startDate.getDate() - diff);
     
     const endDate = new Date(lastDayOfMonth);
-    if (endDate.getDay() !== 6) {
-      endDate.setDate(endDate.getDate() + (6 - endDate.getDay())); // Go forward to Saturday
-    }
+    const lastDayOfWeek = endDate.getDay();
+    const endDiff = this.startOfWeek === 1
+      ? (lastDayOfWeek === 0 ? 0 : 7 - lastDayOfWeek)
+      : (6 - lastDayOfWeek);
+      
+    endDate.setDate(endDate.getDate() + endDiff);
 
     this.days = [];
     let currentDate = new Date(startDate);

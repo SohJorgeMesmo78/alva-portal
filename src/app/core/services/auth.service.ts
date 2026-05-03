@@ -46,6 +46,15 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 
+  updateUserSettings(newSettings: any) {
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      currentUser.settings = newSettings;
+      localStorage.setItem('alva_user', JSON.stringify(currentUser));
+      this.currentUserSubject.next(currentUser);
+    }
+  }
+
   getToken(): string | null {
     return localStorage.getItem('alva_token');
   }
